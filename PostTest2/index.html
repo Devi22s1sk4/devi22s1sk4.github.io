@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bukti Pemesanan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('Background_pemesanan.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+            color: #2d2c2cf6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #676767;
+        }
+
+        header img {
+            width: 150px;
+            height: auto;
+            display: block;
+            margin: 0 auto 10px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #111111;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+
+        .order-info {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .order-info .info {
+            flex: 1;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.95); 
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 0 10px;
+            color: #333;
+        }
+
+        .order-info .info strong {
+            color: #242424;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: rgba(255, 255, 255, 0.95); 
+        }
+
+        table th, table td {
+            padding: 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+            color: #333; 
+        }
+
+        table th {
+            background-color: #c3c2c2;
+        }
+
+        table td {
+            color: #1a1a1a;
+        }
+
+        .menu-img {
+            width: 80px;
+            height: auto;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(200, 198, 198, 0.1);
+        }
+
+        .total, .tax, .grand-total {
+            font-weight: bold;
+        }
+
+        .grand-total {
+            background-color: #f2f2f2;
+            color: #e74c3c;
+        }
+
+        .payment-method {
+            margin: 20px 0;
+        }
+
+        .payment-method label {
+            margin-right: 10px;
+            color: #333;
+        }
+
+        footer {
+            background-color: rgba(255, 255, 255, 0.9); 
+            padding: 10px;
+            text-align: center;
+            border-top: 3px solid #ddd;
+            margin-top: 20px;
+        }
+
+        footer ul {
+            list-style-type: none;
+            color: #333;
+        }
+
+        footer ul li {
+            margin-bottom: 5px;
+        }
+
+        footer a {
+            color: #4c9bd0;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .order-info {
+                flex-direction: column;
+            }
+
+            .order-info .info {
+                margin-bottom: 10px;
+            }
+
+            .menu-img {
+                width: 100px;
+            }
+
+            table th, table td {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .menu-img {
+                width: 80px;
+            }
+
+            table th, table td {
+                font-size: 12px;
+            }
+
+            header h1 {
+                font-size: 2em;
+            }
+        }
+
+        input[type="number"], input[type="date"] {
+            padding: 5px;
+            width: 100px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="logo-resto.jpeg" alt="Logo">
+        <h1>Bukti Pemesanan</h1>
+    </header>
+
+    <section class="order-info">
+        <div class="info">
+            <p>Nama Pelayan: <strong>Romeo</strong></p>
+            <p>Nama Pemesan: <strong>Juliet</strong></p>
+        </div>
+        <div class="info">
+            <p>Tanggal Pemesanan: <input type="date" id="tanggal-pemesanan"></p>
+            <p>Alamat Pemesan: Jl. Pramuka 17 No.1, Kota Samarinda</p>
+        </div>
+    </section>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Nama Menu</th>
+            <th>Jumlah</th>
+            <th>Harga Satuan</th>
+            <th>Total Harga</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><img src="nasi-goreng.jpeg" alt="Nasi Goreng Spesial" class="menu-img"><br>Nasi Goreng Spesial</td>
+            <td><input type="number" placeholder="Porsi"></td>
+            <td>Rp 25.000</td>
+            <td>Rp 25.000</td>
+        </tr>
+        <tr>
+            <td><img src="es-teh-manis.jpeg" alt="Es Teh Manis" class="menu-img"><br>Es Teh Manis</td>
+            <td><input type="number" placeholder="Gelas"></td>
+            <td>Rp 5.000</td>
+            <td>Rp 5.000</td>
+        </tr>
+        <tr class="total">
+            <th colspan="3">Total Pesanan</th>
+            <td>Rp 30.000</td>
+        </tr>
+        <tr class="tax">
+            <th colspan="3">Pajak</th>
+            <td>Rp 2.000</td>
+        </tr>
+        <tr class="grand-total">
+            <th colspan="3">Total Tagihan</th>
+            <td>Rp 32.000</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="payment-method">
+        <h3>Metode Pembayaran</h3>
+        <label><input type="radio" name="payment" value="bca"> Bank BCA</label>
+        <label><input type="radio" name="payment" value="bri"> Bank BRI</label>
+        <label><input type="radio" name="payment" value="ovo"> OVO</label>
+        <label><input type="radio" name="payment" value="gopay"> GoPay</label>
+    </div>
+
+    <footer>
+        <ul>
+            <li>Nama: Devi Siska</li>
+            <li>NIM: 2309106122</li>
+            <li>Praktikum Web: <a href="https://classroom.google.com/c/NzEwMjM1NjcxOTQw/a/NzA2MTI5MTczNjQz/details" target="_blank">Posttest 2</a></li>
+        </ul>
+    </footer>
+</div>
+
+</body>
+</html>
