@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Resep Makanan Sehat</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #fff; /* Latar belakang putih default */
+      color: #333;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      background-color: #003366; 
+      padding: 20px;
+      text-align: center;
+      color: white;
+    
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    /* Light mode (default) */
+    nav ul li a {
+      text-decoration: none;
+      color: black; /* Teks berwarna hitam pada light mode */
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-weight: bold;
+    }
+
+    /* Dark mode */
+    .dark-mode nav ul li a {
+      color: white; /* Teks berwarna putih pada dark mode */
+    }
+
+    .dark-mode nav ul li a:hover, .dark-mode nav ul li a.active {
+      background-color: #333;
+      color: white;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 30px;
+      cursor: pointer;
+      color: rgb(250, 249, 249);
+    }
+
+    main {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .food-card {
+      background-color: rgba(255, 255, 255, 0.481);
+      padding: 20px;
+      margin: 10px;
+      border-radius: 10px;
+      display: inline-block;
+      width: 30%;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(254, 253, 253, 0.149);
+      transition: transform 0.3s;
+      min-height: 250px; 
+    }
+
+    .food-card:hover {
+      transform: scale(1.05);
+    }
+
+    .food-card img {
+      width: 80px; 
+      height: 80px;
+      border-radius: 50%;
+    }
+
+    .food-card {
+      border: 1px solid #717171; /* Garis tepi berwarna abu-abu */
+      box-shadow: 0 4px 8px rgba(34, 34, 34, 0.2);
+      background-color: rgba(255, 255, 255, 0.9);
+      background-image: url('bg-pattern.png');
+      background-size: cover;
+    }
+
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .dark-mode {
+      background-color: #333;
+      color: white;
+    }
+
+    .dark-mode footer {
+      background-color: #111;
+    }
+    .dark-mode .food-card {
+      background-color: rgba(50, 50, 50, 0.6); /* Sesuaikan warna kartu dalam dark mode */
+    }
+
+    .dark-mode nav ul li a {
+      color: #ddd;
+    }
+
+    .dark-mode nav ul li a:hover, .dark-mode nav ul li a.active {
+      background-color: #333;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .food-card {
+        width: 90%;
+      }
+    }
+
+    table, th, td {
+      border: 1px solid #003366;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #003366;
+      color: white;
+    }
+
+    td {
+      background-color: #f9f9f9;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+      padding: 20px;
+      width: 300px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 10px;
+      z-index: 1000;
+    }
+
+    .popup button {
+      margin-top: 10px;
+      background-color: #7a7575c4;
+      color: rgb(0, 0, 0);
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    
+  </style>
+</head>
+
+  <header>
+    <div class="container">
+      <h1>RESEP MAKANAN SEHAT</h1>
+      <button id="theme-toggle">Toggle Dark Mode</button>
+    </div>
+  </header>
+
+  <nav class="container">
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <ul id="nav-links">
+      <li><a href="index.html" class="active">Home</a></li> <!-- Perubahan dari #home ke index.html -->
+      <li><a href="about.html">About Me</a></li>
+    </ul>
+  </nav>
+  
+  <main class="container">
+    <section id="home">
+      <h2>Makanan Favorit Sehat</h2>
+      <i><p>Berikut adalah beberapa makanan sehat favorit yang dapat membantu menjaga kesehatan Anda.</p></i>
+<!-- ================================================================ -->
+      <div class="food-card">
+  <img src="Salad Sayuran.jpeg" alt="Salad Sayuran">
+  <h3>Salad Sayuran</h3>
+  <p>Campuran sayuran segar</p>
+  <img src="Salad Sayuran.jpeg" alt="Gambar Salad" style="width: 160px; height: 160px; border-radius: 10px;" class="image-trigger">
+  <div class="salad-container">
+    <img src="gambar_salad.jpg" alt="Resep Salad Sayuran">
+    <button class="show-recipe">+</button>
+  </div>
+  <div class="popup" id="popup-salad" style="display: none;">
+    <h3>Resep Favorit: Salad Sayuran</h3>
+    <p>Bahan: Selada, Tomat, Timun, Wortel, Kubis ungu, Jagung manis, Telur rebus, Ayam panggang, Pasta</p>
+    <p><b>Cara Membuat:</b></p>
+    <ol>
+      <li>Cuci semua sayuran dengan bersih, kemudian potong-potong sesuai selera.</li>
+      <li>Rebus pasta hingga al dente, tiriskan dan biarkan dingin.</li>
+      <li>Potong telur rebus dan ayam panggang menjadi ukuran kecil.</li>
+      <li>Campurkan semua bahan dalam mangkuk besar.</li>
+      <li>Tambahkan jagung manis untuk memberikan rasa manis yang segar.</li>
+      <li>Untuk dressing, bisa menggunakan minyak zaitun, lemon, garam, dan lada sesuai selera.</li>
+      <li>Aduk rata dan sajikan salad segar ini dalam mangkuk saji.</li>
+    </ol>
+    <button class="close-popup">Tutup</button>
+  </div>
+</div>
+<!-- ================================================================ -->
+<div class="food-card">
+  <img src="Smoothie Bowl.jpeg" alt="Smoothie Bowl">
+  <h3>Smoothie Bowl</h3>
+  <p>Mix buah dan yogurt yang menyegarkan.</p>
+  <img src="Smoothie Bowl.jpeg" alt="Gambar Smoothie" style="width: 160px; height: 160px; border-radius: 10px;" class="image-trigger">
+  <div class="smoothie-container">
+    <img src="gambar_smoothie_bowl.jpg" alt="Resep Smoothie Bowl">
+    <button class="show-recipe">+</button>
+  </div>
+  <div class="popup" id="popup-smoothie" style="display: none;">
+    <h3>Resep Favorit: Smoothie Bowl</h3>
+    <p>Bahan: Pisang, Kiwi, Delima, Yogurt, Granola, Madu, Biji Chia, Blueberry, Jeruk.</p>
+    <b><p>Cara Membuat:</p></b>
+    <ol>
+      <li>Siapkan semua bahan yang diperlukan: pisang, kiwi, delima, yogurt, granola, madu, biji chia, blueberry, dan jeruk.</li>
+      <li>Potong pisang dan kiwi menjadi potongan kecil untuk memudahkan pencampuran.</li>
+      <li>Masukkan potongan pisang, blueberry dan yogurt ke dalam blender.</li>
+      <li>Tambahkan sedikit madu untuk memberikan rasa manis sesuai selera.</li>
+      <li>Blend semua bahan hingga halus dan creamy.</li>
+      <li>Tuangkan smoothie ke dalam mangkuk, lalu hias dengan granola, pisang, biji chia, delima, blueberry, kiwi dan potongan jeruk di atasnya.</li>
+      <li>Sajikan segera dan nikmati smoothie bowl yang segar!</li>
+    </ol>
+    <button class="close-popup">Tutup</button>
+  </div>
+</div>
+<!-- ================================================================ -->
+<div class="food-card">
+  <img src="Sup Sayuran.jpeg" alt="Sup Sayuran">
+  <h3>Sup Sayuran</h3>
+  <p>Sup sayuran hangat dan menyehatkan.</p>
+  <img src="Sup Sayuran.jpeg" alt="Gambar Sup" style="width: 160px; height: 160px; border-radius: 10px;" class="image-trigger">
+  <div class="soup-container">
+    <img src="gambar_soup.jpg" alt="Resep Sup Sayuran">
+    <button class="show-recipe">+</button>
+  </div>
+  <div class="popup" id="popup-soup" style="display: none;">
+    <h3>Resep Favorit: Sup Sayuran</h3>
+    <p>Bahan: Wortel, Jamur, Bakso Ikan, Kentang, Brokoli, Buncis, Jagung manis, Telur rebus, Bawang merah, Bawang putih, Kaldu sayuran, Garam, Lada.</p>
+    <b><p>Cara Membuat:</p></b>
+    <ol>
+      <li>Tumis bawang merah dan bawang putih hingga harum sebagai dasar kaldu sup yang lezat.</li>
+      <li>Masukkan air dan kaldu sayuran ke dalam tumisan bumbu, lalu didihkan.</li>
+      <li>Masukkan sayuran yang membutuhkan waktu masak lebih lama seperti wortel, kentang, dan brokoli. Masak hingga setengah matang.</li>
+      <li>Masukkan buncis, jagung manis, dan sawi putih.</li>
+      <li>Tambahkan bakso ikan, telur rebus, dan tahu sutra yang sudah dipotong-potong.</li>
+      <li>Bumbui dengan garam dan lada sesuai selera. Masak hingga semua bahan matang sempurna dan sajikan selagi hangat.</li>
+    </ol>
+    <button class="close-popup">Tutup</button>
+  </div>
+</div>
+<!-- ================================================================ -->
+<div class="food-card">
+  <img src="Roti Gandum.jpeg" alt="Roti Gandum dengan Alpukat">
+  <h3>Roti Gandum dengan Alpukat</h3>
+  <p>Menu sehat yang kaya akan serat dan lemak baik.</p>
+  <img src="Roti Gandum.jpeg" alt="Gambar Roti Gandum" style="width: 160px; height: 160px; border-radius: 10px;" class="image-trigger">
+  <div class="soup-container">
+    <img src="gambar_roti_gandum.jpg" alt="Resep Roti Gandum dengan Alpukat">
+    <button class="show-recipe">+</button>
+  </div>
+  <div class="popup" id="popup-roti" style="display: none;">
+    <h3>Resep Favorit: Roti Gandum dengan Alpukat</h3>
+    <p>Bahan: Roti gandum, Alpukat matang, Garam, Lada, Air perasan lemon, Minyak zaitun, Tomat (opsional), Selada (opsional).</p>
+    <b><p>Cara Membuat:</p></b>
+    <ol>
+      <li>Belah alpukat dan ambil dagingnya, lalu haluskan dengan garpu.</li>
+      <li>Tambahkan sedikit air perasan lemon, garam, dan lada sesuai selera ke dalam alpukat yang sudah dihaluskan.</li>
+      <li>Panggang roti gandum hingga kecokelatan dan renyah.</li>
+      <li>Oleskan campuran alpukat di atas roti yang sudah dipanggang.</li>
+      <li>Tambahkan irisan tomat dan selada sebagai pelengkap jika diinginkan.</li>
+      <li>Drizzle dengan sedikit minyak zaitun sebelum disajikan.</li>
+    </ol>
+    <button class="close-popup">Tutup</button>
+  </div>
+</div>
+<!-- ================================================================ -->
+<div class="food-card">
+  <img src="Kimchi.jpeg" alt="Kimchi">
+  <h3>Kimchi</h3>
+  <p>Fermentasi sayuran pedas yang kaya probiotik.</p>
+  <img src="Kimchi.jpeg" alt="Gambar Kimchi" style="width: 160px; height: 160px; border-radius: 10px;" class="image-trigger">
+  <div class="kimchi-container">
+    <img src="gambar_kimchi.jpg" alt="Resep membuat Kimchi">
+    <button class="show-recipe">+</button>
+  </div>
+  <div class="popup" id="popup-kimchi" style="display: none;">
+    <h3>Resep Favorit: Kimchi</h3>
+    <p>Bahan: Kol, Bawang daun, Lobak, Bawang putih, Jahe, Gula, Garam, Bubuk cabai, Air.</p>
+    <b><p>Cara Membuat:</p></b>
+    <ol>
+      <li>Potong kol dan lobak, kemudian rendam dalam air garam selama 2-3 jam.</li>
+      <li>Blender bawang putih, jahe, gula, dan bubuk cabai dengan sedikit air.</li>
+      <li>Campurkan sayuran yang telah direndam dengan pasta bumbu hingga merata.</li>
+      <li>Masukkan ke dalam wadah kedap udara dan fermentasikan selama 2-3 hari di suhu ruangan.</li>
+      <li>Setelah fermentasi, simpan dalam lemari es untuk meningkatkan rasa.</li>
+    </ol>
+    <button class="close-popup">Tutup</button>
+  </div>
+</div>
+<!-- ================================================================ -->
+<script>
+  // Dark Mode and Light Mode Toggle
+const themeToggleButton = document.getElementById('theme-toggle');
+const body = document.body;
+
+themeToggleButton.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  themeToggleButton.textContent = body.classList.contains('dark-mode') ? 'Toggle Light Mode' : 'Toggle Dark Mode';
+});
+
+// Hamburger Menu Toggle
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('nav-links');
+
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+// Show/Hide Recipe Popups
+document.querySelectorAll(".show-recipe").forEach(button => {
+  button.addEventListener("click", function () {
+    const popup = this.closest('.food-card').querySelector('.popup');
+    popup.style.display = "block";
+  });
+});
+
+document.querySelectorAll(".close-popup").forEach(button => {
+  button.addEventListener("click", function () {
+    const popup = this.closest('.popup');
+    popup.style.display = "none";
+  });
+});
+
+  closeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const popup = button.closest('.popup');
+      popup.style.display = 'none';
+    });
+  });
+</script>
+
+<footer>
+    <div class="container">
+      <p>&copy; 2024 Resep Makanan Sehat</p>
+    </div>
+  </footer>
+  <script
+    });
+
+    popupTriggers.forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        popupBox.style.display = 'block';
+      });
+
+    closePopupButton.addEventListener('click', () => {
+      popupBox.style.display = 'none';
+    });
+
+    document.querySelectorAll(".show-recipe").forEach(button => {
+      button.addEventListener("click", function () {
+        const popupId = this.closest('.food-card').querySelector('.popup').id;
+        document.getElementById(popupId).style.display = "block";
+      });
+    });
+
+    document.querySelectorAll(".close-popup").forEach(button => {
+      button.addEventListener("click", function () {
+        const popup = this.closest('.popup');
+        popup.style.display = "none";
+      });
+    });
+  </script>
+</body>
+</html>
