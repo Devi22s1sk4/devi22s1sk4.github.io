@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Resep Makanan Sehat</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #fff;
+      color: #333;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    body.dark-mode {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header {
+      background-color: #003366;
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-weight: bold;
+      background-color: #004080; 
+    }
+
+    nav ul li a.active {
+      background-color: #004080; 
+      color: #ffffff; 
+    }
+
+    nav ul li a:hover {
+      background-color: #004080; 
+      color: #003366; 
+    }
+
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    body.dark-mode footer {
+      background-color: #222;
+    }
+
+    .food-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .food-card {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      margin: 10px;
+      border-radius: 10px;
+      width: 250px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+    }
+
+    body.dark-mode .food-card {
+      background-color: rgba(50, 50, 50, 0.9);
+    }
+
+    .food-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+
+    #add-recipe {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      border-radius: 5px;
+      text-decoration: none;
+      width: fit-content;
+      transition: background-color 0.3s;
+    }
+
+    #add-recipe:hover {
+      background-color: #001f4d;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      border-radius: 10px;
+    }
+
+    body.dark-mode .modal-content {
+      background-color: #444;
+      color: white;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .toggle-button {
+      margin: 20px;
+      padding: 10px 20px;
+      background-color: #003366;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .toggle-button:hover {
+      background-color: #001f4d;
+    }
+
+    main i {
+      display: block;
+      text-align: center;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+
+
+<body>
+  <header>
+    <div class="container">
+      <h1>RESEP MAKANAN SEHAT</h1>
+      <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    </div>
+  </header>
+
+  <nav class="container">
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <section id="home">
+      <h2>Makanan Favorit Sehat</h2>
+      <i><p>Berikut adalah beberapa makanan sehat favorit yang dapat membantu menjaga kesehatan Anda.</p></i>
+    </section>
+
+    <section class="container">
+        <h2>Resep Makanan</h2>
+        <div class="food-grid">
+        <div class="food-card" onclick="openModal('Salad Sayuran', 'Bahan-bahan: \n- Sayuran segar (selada, tomat, mentimun) \n- Minyak zaitun \n- Cuka \n- Garam \n- Lada \n\nCara membuat: \n1. Cuci semua sayuran. \n2. Potong-potong sayuran. \n3. Campurkan semua bahan dalam mangkuk. \n4. Sajikan segar.');">
+          <img src="Salad Sayuran.jpeg" alt="Salad Sayuran">
+          <h3>Salad Sayuran</h3>
+        </div>
+
+        <div class="food-card" onclick="openModal('Smoothie Bowl', 'Bahan-bahan: \n- 1 pisang matang \n- 1/2 cangkir yogurt \n- 1/2 cangkir susu almond \n- Buah-buahan segar (strawberry, blueberry) \n- Granola \n\nCara membuat: \n1. Campurkan pisang, yogurt, dan susu almond dalam blender. \n2. Haluskan hingga kental. \n3. Tuang dalam mangkuk dan hias dengan buah dan granola.');">
+          <img src="Smoothie Bowl.jpeg" alt="Smoothie Bowl">
+          <h3>Smoothie Bowl</h3>
+        </div>
+
+        <div class="food-card" onclick="openModal('Kimchi', 'Bahan-bahan: \n- 1 kubis napa \n- 1/4 cangkir garam \n- 1 cangkir air \n- 3 siung bawang putih (cincang) \n- 1 inci jahe (parut) \n- 2 sdm bubuk cabai \n\nCara membuat: \n1. Potong kubis dan rendam dalam air garam selama 2 jam. \n2. Bilas dan campurkan dengan bawang putih, jahe, dan bubuk cabai. \n3. Simpan dalam wadah kedap udara dan fermentasi selama 3-5 hari.');">
+          <img src="Kimchi.jpeg" alt="Kimchi">
+          <h3>Kimchi</h3>
+        </div>
+
+        <div class="food-card" onclick="openModal('Sup Sayuran', 'Bahan: \n- Wortel \n- Jamur \n- Bakso Ikan \n- Kentang \n- Brokoli \n- Buncis \n- Jagung manis \n- Telur rebus \n- Bawang merah \n- Bawang putih \n- Kaldu sayuran \n- Garam \n- Lada\n\nCara Membuat: \n1. Tumis bawang merah dan bawang putih hingga harum. \n2. Tambahkan air dan kaldu sayuran, didihkan. \n3. Masukkan wortel, kentang, dan brokoli, masak setengah matang. \n4. Masukkan buncis, jagung manis, dan sawi putih. \n5. Tambahkan bakso ikan, telur rebus, tahu sutra. \n6. Bumbui dengan garam dan lada, masak hingga matang.');">
+          <img src="Sup Sayuran.jpeg" alt="Sup Sayuran">
+          <h3>Sup Sayuran</h3>
+        </div>
+
+        <div class="food-card" onclick="openModal('Roti Gandum dengan Alpukat', 'Bahan: \n- Roti gandum \n- Alpukat matang \n- Garam \n- Lada \n- Air perasan lemon \n- Minyak zaitun \n- Tomat (opsional) \n- Selada (opsional)\n\nCara Membuat: \n1. Belah alpukat dan ambil dagingnya. \n2. Tambahkan air lemon, garam, lada, haluskan. \n3. Panggang roti gandum. \n4. Oleskan alpukat di atas roti. \n5. Tambahkan tomat dan selada, jika diinginkan. \n6. Drizzle minyak zaitun sebelum disajikan.');">
+          <img src="Roti Gandum.jpeg" alt="Roti Gandum dengan Alpukat">
+          <h3>Roti Gandum dengan Alpukat</h3>
+        </div>
+      </div>
+
+    <a href="tambah_resep.php" id="add-recipe">Tambah Resep Anda</a>
+  </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Resep Makanan Sehat. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2 id="modal-title"></h2>
+      <p id="modal-description"></p>
+    </div>
+  </div>
+
+  <script>
+    function openModal(title, description) {
+      document.getElementById('modal-title').innerText = title;
+      document.getElementById('modal-description').innerText = description;
+      document.getElementById('myModal').style.display = "block";
+    }
+
+    function closeModal() {
+      document.getElementById('myModal').style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('myModal');
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
